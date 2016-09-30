@@ -33,3 +33,9 @@ Copy all from `example.com` `tmp` dir to local `tmp` dir
 ```
 rsync USER@example.com:/tmp/ /tmp/*
 ```
+
+## Generate 10kk CSV dump
+
+```
+awk -F $'\t' 'BEGIN {OFS=FS} {id=$1; for(i=id*40000;i<(id*40000)+40000;i++){ $1=i; print $0; }}' posts > posts.csv
+```

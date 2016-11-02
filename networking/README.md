@@ -21,3 +21,20 @@ ab -n 100 -c 10 -C "COOKIE=VALUE" http://example.com/
 ## Use iperft to check connection between testing servers
 
  iperf -c SERVER_ADDRESS
+
+## Simulate poor connection
+
+* Create a pipe which adds 300ms delay
+`dnctl pipe 1 config bw 10Kbit/s delay 300`
+
+* Apply the pipe one to redis connection
+```
+echo "dummynet out proto tcp from any to any port 6379 pipe 1" |pfctl -f -
+```
+
+* Enable `pfctl`
+```
+pfctl -e
+```
+When you're done: `pfctl -F /etc/pf.conf and dnctl -q flush`
+

@@ -21,6 +21,11 @@ script example can be found in https://github.com/wg/wrk/tree/master/scripts
 ```
 ### tsung stress testing
 
+if you're looking for some more extendable thing supporting websockets
+and complex scenarios builder which would emulate user's behaviour you
+could condier the tsung. Take a look at [the simple example][examples/tsung_websocket.xml]
+over [phoenix_social_presence)](https://github.com/alvinlindstam/phoenix_social_presence).
+
 ## Use iperft to check connection between testing servers
 
 ```
